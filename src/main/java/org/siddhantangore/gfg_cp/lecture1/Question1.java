@@ -1,4 +1,4 @@
-package org.siddhantangore.lecture1;
+package org.siddhantangore.gfg_cp.lecture1;
 
 import java.util.Scanner;
 
