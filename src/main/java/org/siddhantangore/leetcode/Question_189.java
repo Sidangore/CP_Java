@@ -15,6 +15,7 @@ public class Question_189 {
     public static void rotateArrayByK(int[] nums, int k) {
         // Need to incorporate the logic of reversing an array
         int n = nums.length;
+        k %= n;
         reverseArray(nums, n - k, n - 1);
         reverseArray(nums, 0, n - k - 1);
         reverseArray(nums, 0, nums.length - 1);
