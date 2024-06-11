@@ -4,8 +4,12 @@ import java.util.Arrays;
 
 public class S360 {
     public static void main(String[] args) {
-        String response = "191231110150524";
-        handleFIRSSubmitResponse(response);
+        String response = "Your request cannot be placed!"; // 1#91231110#150524 191231110150524
+//        handleFIRSSubmitResponse(response);
+//        if (response.contains("#")) { // O (n- length of the string)
+            response = response.replace("#", ""); //
+//        }
+        System.out.println("Response = " + response);
     }
 
     public static void handleFIRSSubmitResponse(String response) {
