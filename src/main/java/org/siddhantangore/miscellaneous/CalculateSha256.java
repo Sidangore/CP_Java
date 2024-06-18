@@ -8,31 +8,40 @@ import java.util.Arrays;
 
 public class CalculateSha256 {
     public static void main(String[] args) throws NoSuchAlgorithmException {
-        String amount = "2", invoice = "", mrn = "123489";
+        String amount = "120", invoice = "", mrn = "010203", uid = "";
 
+        System.out.println("Test Case ");
+        System.out.println(getSaleRequestBody(amount, mrn, uid));
+        System.out.println("\nRequest - Mcomm to Card Payment\n");
+        System.out.println("\nResponse - Card Payment to Mcomm\n");
+        System.out.println("\nResponse - Mcomm to Biller\n");
         System.out.println(getRequestBody(amount, invoice, mrn));
-        System.out.println(getSaleRequestBody(amount, mrn));
+        System.out.println("\nRequest - Mcomm to Card Payment\n");
+        System.out.println("\nResponse - Card Payment to Mcomm\n");
+        System.out.println("\nResponse - Mcomm to Biller\n");
     }
 
     private static String getRequestBody(String amount, String invoice, String mrn) throws NoSuchAlgorithmException {
+        System.out.println("GET TRANSACTION");
+        System.out.println("Request - Biller to Mcomm");
         StringBuilder stringForCheckSum = new StringBuilder("CardTransactionget_transaction");
         stringForCheckSum.append(amount);
         stringForCheckSum.append(mrn);
         String checkSum = toHexString(getSha256(stringForCheckSum.toString()));
 
-        System.out.println("Checksum = " + checkSum);
         return "{\"version\":\"2.0\",\"workflow\":\"CardTransaction\",\"tranType\":\"get_transaction\",\"uid\":\"\",\"txnDetails\":{\"amounts\":{\"amount\":" + amount + "},\"txnInfo\":{\"mrn\":\"" + mrn + "\",\"invoiceNo\":\"" + invoice + "\"},\"additionalParams\":{}},\"checksum\":\"" + checkSum + "\"}";
     }
 
-    private static String getSaleRequestBody (String amount, String mrn) throws NoSuchAlgorithmException {
+    private static String getSaleRequestBody (String amount, String mrn, String uid) throws NoSuchAlgorithmException {
+        System.out.println("GET SALE");
+        System.out.println("Request - Biller to Mcomm");
         StringBuilder stringForCheckSum = new StringBuilder("CardTransactionsale");
         amount = amount + "00";
         stringForCheckSum.append(amount);
         stringForCheckSum.append(mrn);
         String checkSum = toHexString(getSha256(stringForCheckSum.toString()));
 
-        System.out.println("Checksum = " + checkSum);
-        return "{\"version\":\"2.0\",\"workflow\":\"CardTransaction\",\"tranType\":\"sale\",\"uid\":\"1234\",\"txnDetails\":{\"amounts\":{\"amount\":" + amount + "},\"txnInfo\":{\"mrn\":\"" + mrn + "\"},\"additionalParams\":{\"isQfpay\":true}},\"checksum\":\"" + checkSum + "\"}";
+        return "{\"version\":\"2.0\",\"workflow\":\"CardTransaction\",\"tranType\":\"sale\",\"uid\":\"" + uid + "\",\"txnDetails\":{\"amounts\":{\"amount\":" + amount + "},\"txnInfo\":{\"mrn\":\"" + mrn + "\"},\"additionalParams\":{\"isQfpay\":true}},\"checksum\":\"" + checkSum + "\"}";
     }
 
     public static byte[] getSha256(String input) throws NoSuchAlgorithmException {
