@@ -2,7 +2,7 @@ package org.siddhantangore.dataStructuresAndAlgorithms.linkedlist;
 
 public class Example2 {
     public static void main (String[] args) {
-        LinkedList list = new LinkedList();
+        LinkedListDemo list = new LinkedListDemo();
 
         list.insertNodeAtBeginning(10);
         list.insertNodeAtBeginning(20);

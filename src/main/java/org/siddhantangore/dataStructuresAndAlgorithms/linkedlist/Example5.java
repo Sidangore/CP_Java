@@ -2,20 +2,20 @@ package org.siddhantangore.dataStructuresAndAlgorithms.linkedlist;
 
 public class Example5 {
     public static void main (String[] args) {
-        LinkedList.Node head = new LinkedList.Node(10);
-        head.next = new LinkedList.Node(20);
-        head.next.next = new LinkedList.Node(30);
+        LinkedListDemo.Node head = new LinkedListDemo.Node(10);
+        head.next = new LinkedListDemo.Node(20);
+        head.next.next = new LinkedListDemo.Node(30);
         head.next.next.next = head;
         head = insertAtBegin2(head, 15);
         Example4.printList1(head);
     }
 
-    public static LinkedList.Node insertAtBegin(LinkedList.Node head, int data) {
-        LinkedList.Node newNode = new LinkedList.Node(data);
+    public static LinkedListDemo.Node insertAtBegin(LinkedListDemo.Node head, int data) {
+        LinkedListDemo.Node newNode = new LinkedListDemo.Node(data);
         if (head == null) {
             newNode.next = newNode;
         } else {
-            LinkedList.Node currentNode = head;
+            LinkedListDemo.Node currentNode = head;
             while (currentNode.next != head) {
                 currentNode = currentNode.next;
             }
@@ -25,8 +25,8 @@ public class Example5 {
         return newNode;
     }
 
-    public static LinkedList.Node insertAtBegin2(LinkedList.Node head, int data) {
-        LinkedList.Node newNode = new LinkedList.Node(data);
+    public static LinkedListDemo.Node insertAtBegin2(LinkedListDemo.Node head, int data) {
+        LinkedListDemo.Node newNode = new LinkedListDemo.Node(data);
         if (head == null) {
             newNode.next = newNode;
             return newNode;

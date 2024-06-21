@@ -2,11 +2,11 @@ package org.siddhantangore.dataStructuresAndAlgorithms.linkedlist;
 
 public class Example1 {
     public static void main(String[] args) {
-        LinkedList list = new LinkedList();
+        LinkedListDemo list = new LinkedListDemo();
 
-        list.head = new LinkedList.Node(1);
-        LinkedList.Node second = new LinkedList.Node(2);
-        LinkedList.Node third = new LinkedList.Node(3);
+        list.head = new LinkedListDemo.Node(1);
+        LinkedListDemo.Node second = new LinkedListDemo.Node(2);
+        LinkedListDemo.Node third = new LinkedListDemo.Node(3);
 
         list.head.next = second;
         second.next = third;
